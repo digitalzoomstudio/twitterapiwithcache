@@ -12,7 +12,7 @@ $api1 = new TwitterAPI($token, $token_secret, $consumer_key, $consumer_secret);
 
 
 //=use twitter 1.0 api ( 1.1 with oauth is default )
-$api1->set_path('/1.0/statuses/user_timeline.json');
+$api1->set_path('/1.1/statuses/user_timeline.json');
 $query = array( // query parameters
     'screen_name' => 'twitterapi',
     'count' => '1'
