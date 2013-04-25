@@ -39,7 +39,7 @@ class TwitterAPI{
         $ci = -1;//==cached i
         $json = '';
         
-        if(strpos('1.1', $this->path)===true && $this->token == ''){
+        if(strpos($this->path, '1.1')===true && $this->token == ''){
             return 'token not set..';
         }
         
@@ -61,6 +61,7 @@ class TwitterAPI{
             if ($cacher[$i]['query'] == $query){
                 if ($_SERVER['REQUEST_TIME'] - $cacher[$i]['time'] < 3600) {
                     //echo 'found cache';
+                    //if()
                     $ci = $i;
                     $json = $cacher[$i]['output'];
                     $cached = true;
@@ -75,6 +76,7 @@ class TwitterAPI{
         
         
         if($cached==false){
+        //echo 'ceva'; echo $url;
         //echo $this->token; echo ' ';echo $this->token_secret; echo ' '; echo $this->consumer_ley; echo ' '; echo $this->consumer_secret;
         $oauth = array(
             'oauth_consumer_key' => $this->consumer_key,
@@ -173,11 +175,12 @@ class TwitterAPI{
                     }
 
                     // Write $somecontent to our opened file.
+                    if(strpos($content, '"errors":')===false){
                     if (fwrite($handle, $content) === FALSE) {
                         echo "Cannot write to file ($filename)";
                         exit;
                     }
-
+                    }
 
                     fclose($handle);
 
