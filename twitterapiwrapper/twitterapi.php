@@ -26,6 +26,10 @@ class TwitterAPI{
         $this->consumer_key = $consumer_key;
         $this->consumer_secret = $consumer_secret;
     }
+    
+    function set_path($arg){
+        $this->path = $arg;
+    }
     function do_query($query){
         
         
